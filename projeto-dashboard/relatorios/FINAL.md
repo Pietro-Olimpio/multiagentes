@@ -2,24 +2,24 @@
 
 ## Status conjunto: **BLOQUEADO**
 
-A rodada 07 acrescentou navegação e movimento cinematográfico em SVG/CSS nativos, mais um encerramento com links de GitHub, LinkedIn e WhatsApp. As verificações locais do Coordenador passaram; a aprovação conjunta está bloqueada porque créditos indisponíveis impediram relatórios novos e independentes de Tester e Revisor. Não se declara aprovação sem eles.
+A rodada 07 acrescentou navegação e movimento cinematográfico em SVG/CSS nativos. Na rodada 08, o encerramento foi atualizado com a mensagem “O seu próximo projeto pode começar aqui.” e os links foram rotulados como “Meu GitHub”, “Meu LinkedIn” e “Meu número para contato”. Os testes locais passaram; a aprovação conjunta permanece bloqueada porque não foi possível obter revisão independente desta rodada.
 
 ## Versão examinada
 
 | Arquivo | SHA-256 |
 |---|---|
-| `site/index.html` | `1038F4DDAA8CAA51476D0248D788B5727B139AC41815EB853A8B091D4118E435` |
-| `site/styles.css` | `397776D3B1C0D588F31BABE6B8D6A0F3E0E226EB2A2A8515AF1E78CCD20412E2` |
+| `site/index.html` | `4DF531C513E32F8BE26E5B632219092BB0787A36E252B3777F9BD4CF846B438E` |
+| `site/styles.css` | `A0611222B0B92CCD3AFD01F02BF6090F82E9720952A9BFDD8E21C9C00108ABDB` |
 | `site/dashboard.js` | `0E9D55AF9C48F42F146DD9EB80287036D825A4686064DC43DF9D2CF2F0022766` |
-| `tests/test_dashboard_browser.cjs` | `181E88A3F3E781ADB9300033E91E7C03B59CEE3880AC056EAA6F7A8A2CD7A51A` |
+| `tests/test_dashboard_browser.cjs` | `1A39A072E70952779D72F7E48B7C14CB15A40768553059851F677EF1A7B8880C` |
 
 ## Entrega e testes locais
 
 - Preservada a stack estática HTML/CSS/JS e a funcionalidade do painel. SVG/CSS entregam profundidade; não foi adicionado WebGL/dependência pesada.
 - Links finais: `https://github.com/Pietro-Olimpio`, `https://www.linkedin.com/in/pietro-correa` e `https://wa.me/551999572812`.
-- Suíte executada pelo Coordenador: **6/6 passaram**, com integração no Chrome/CDP. `node --check` do JS/teste passou; HTTP 200 para HTML, CSS, JS, JSON e favicon. Os três destinos sociais, navegação por capítulo, progresso de rolagem, movimento reduzido, teclado e viewports 1440/390/320 foram conferidos.
-- Capturas visuais desktop/mobile e da área de contato estão em `%TEMP%\orbita-round07-evidence\`.
-- Relatório detalhado e próximo passo: `relatorios/rodada-07/coordenador.md`. Revisão independente desta versão e aprovação conjunta: **PENDENTES** por indisponibilidade de créditos dos subagentes.
+- Suíte executada pelo Coordenador na rodada 08: **6/6 passaram**, incluindo Chrome/CDP. O teste verifica também o texto da chamada e os três rótulos de contato. HTTP, teclado, movimento reduzido e viewports 1440/390/320 passaram.
+- Capturas visuais da versão atual estão em `%TEMP%\orbita-round08-evidence\`.
+- Relatório desta alteração: `relatorios/rodada-08/coordenador.md`. Revisão independente desta rodada e aprovação conjunta: **PENDENTES**.
 
 ## Abrir o site
 

@@ -282,6 +282,8 @@ async function main() {
     const cinematicLinks = await evaluate(`(() => ({
       sections: [...document.querySelectorAll('.chapter-links a')].map(link => ({ href: link.getAttribute('href'), exists: Boolean(document.querySelector(link.getAttribute('href'))) })),
       contacts: [...document.querySelectorAll('.connect-link')].map(link => ({ href: link.href, target: link.target, rel: link.rel, title: link.querySelector('strong')?.textContent.trim() })),
+      contactHeading: document.querySelector('#connect-title').textContent.replace(/\\s+/g, ' ').trim(),
+      contactDescription: document.querySelector('.connect-intro > p:last-child').textContent.trim(),
       contactBeforeFooter: document.querySelector('.connect-section').compareDocumentPosition(document.querySelector('.dashboard-footer')) & Node.DOCUMENT_POSITION_FOLLOWING
     }))()`);
     assert.deepEqual(cinematicLinks.sections.map(item => item.href), ['#explore', '#compare', '#detail']);
@@ -292,7 +294,9 @@ async function main() {
       'https://wa.me/551999572812',
     ]);
     assert.ok(cinematicLinks.contacts.every(item => item.target === '_blank' && item.rel.includes('noopener')));
-    assert.deepEqual(cinematicLinks.contacts.map(item => item.title), ['GitHub', 'LinkedIn', 'WhatsApp']);
+    assert.deepEqual(cinematicLinks.contacts.map(item => item.title), ['Meu GitHub', 'Meu LinkedIn', 'Meu número para contato']);
+    assert.equal(cinematicLinks.contactHeading, 'O seu próximo projeto pode começar aqui.');
+    assert.equal(cinematicLinks.contactDescription, 'Quer conhecer meu trabalho ou conversar sobre uma oportunidade? Estou disponível para trocar ideias.');
     assert.equal(cinematicLinks.contactBeforeFooter, 4, 'Bloco de contatos precisa anteceder o rodapé.');
     await evaluate('window.scrollTo(0, document.documentElement.scrollHeight)');
     await waitFor("document.querySelector('.chapter-links a[href=\\\"#detail\\\"]')?.getAttribute('aria-current') === 'location'", 'Rolagem não ativou o capítulo Detalhar.');
