@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#090f16">
+    <meta name="description" content="Painel demonstrativo interativo de vendas da papelaria, por categoria e cidade.">
+    <title>Órbita · Vendas em perspectiva</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./dashboard.js" defer></script>
+  </head>
+  <body>
+    <main id="welcome-gate" class="welcome-gate" aria-labelledby="welcome-title">
+      <div class="welcome-shell">
+        <header class="welcome-topbar">
+          <a class="brand" href="#welcome-title" aria-label="Órbita, início">
+            <span class="brand-mark" aria-hidden="true">ó</span><span class="brand-word">ÓRBITA<span class="brand-dot">.</span></span>
+          </a>
+          <span class="demo-chip"><span aria-hidden="true"></span> DEMONSTRAÇÃO ESTÁTICA</span>
+        </header>
+
+        <div class="welcome-content">
+          <svg class="observatory-art" viewBox="0 0 620 620" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="orb-aura"><stop offset="0" stop-color="#74d9d2" stop-opacity=".2"/><stop offset=".5" stop-color="#315c72" stop-opacity=".12"/><stop offset="1" stop-color="#090f16" stop-opacity="0"/></radialGradient>
+              <radialGradient id="orb-core" cx="34%" cy="29%"><stop offset="0" stop-color="#c4f3e9" stop-opacity=".9"/><stop offset=".16" stop-color="#66bfc0" stop-opacity=".72"/><stop offset=".58" stop-color="#1b4558" stop-opacity=".9"/><stop offset="1" stop-color="#0a141e"/></radialGradient>
+              <linearGradient id="orb-rim" x1=".1" y1=".2" x2=".9" y2=".8"><stop stop-color="#ff8064" stop-opacity=".05"/><stop offset=".45" stop-color="#74d9d2" stop-opacity=".8"/><stop offset="1" stop-color="#ff8064" stop-opacity=".72"/></linearGradient>
+              <filter id="orb-blur" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="12"/></filter>
+            </defs>
+            <circle cx="310" cy="310" r="245" fill="url(#orb-aura)"/>
+            <circle cx="310" cy="310" r="164" fill="none" stroke="#54727c" stroke-opacity=".28"/>
+            <circle cx="310" cy="310" r="194" fill="none" stroke="#54727c" stroke-opacity=".13" stroke-dasharray="1 7"/>
+            <ellipse cx="310" cy="310" rx="244" ry="91" fill="none" stroke="url(#orb-rim)" stroke-opacity=".62" transform="rotate(-31 310 310)"/>
+            <ellipse cx="310" cy="310" rx="212" ry="132" fill="none" stroke="#74d9d2" stroke-opacity=".2" transform="rotate(28 310 310)"/>
+            <circle cx="310" cy="310" r="116" fill="#74d9d2" opacity=".28" filter="url(#orb-blur)" class="orb-aura-pulse"/>
+            <circle cx="310" cy="310" r="102" fill="url(#orb-core)" stroke="#b5eeea" stroke-opacity=".36"/>
+            <path d="M236 273c20-43 65-68 111-60" fill="none" stroke="#f3f1e9" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/>
+            <g class="orb-satellite"><circle cx="87" cy="195" r="6" fill="#ff8064"/><circle cx="87" cy="195" r="13" fill="none" stroke="#ff8064" stroke-opacity=".38"/></g>
+            <circle cx="500" cy="390" r="3" fill="#74d9d2"/>
+            <circle cx="172" cy="448" r="2" fill="#ff8064"/>
+            <path d="M102 492h54m-54 8h28" stroke="#91a1a8" stroke-opacity=".5"/>
+            <text x="102" y="479" class="orbital-label">ÓRBITA / OBSERVATÓRIO 01</text>
+            <text x="414" y="493" class="orbital-label">CAMPO DE VENDAS</text>
+          </svg>
+          <section class="welcome-copy" aria-label="Apresentação do painel">
+            <p class="eyebrow">PAPELARIA <span>/</span> PAINEL ANALÍTICO</p>
+            <h1 id="welcome-title">Olhe para suas vendas <span>de outro ângulo.</span></h1>
+            <p class="welcome-description">Uma visão clara do que acontece em cada categoria, cidade e venda. Entre e explore os dados da Órbita.</p>
+            <div class="welcome-highlights" aria-label="O que você encontrará">
+              <span><b aria-hidden="true">01</b> Indicadores em tempo real*</span>
+              <span><b aria-hidden="true">02</b> Comparativos por categoria e cidade</span>
+              <small>* Atualizados conforme os filtros da demonstração.</small>
+            </div>
+          </section>
+
+          <section class="login-card" aria-labelledby="login-title">
+            <div class="login-card-kicker"><span>ACESSO ABERTO</span><span class="login-number">01 — 01</span></div>
+            <h2 id="login-title">Entre no painel</h2>
+            <p class="login-intro">Preencha os campos para começar a explorar.</p>
+
+            <aside class="demo-warning" aria-label="Aviso importante sobre a demonstração">
+              <span class="warning-icon" aria-hidden="true">!</span>
+              <p><strong>Somente uma demonstração.</strong> Este site estático não valida credenciais em servidor. Qualquer e-mail válido e qualquer senha não vazia permitem entrar. Não use uma senha real.</p>
+            </aside>
+
+            <form id="demo-login-form" class="login-form" novalidate>
+              <label for="login-email">E-mail
+                <input id="login-email" name="email" type="email" placeholder="voce@exemplo.com" autocomplete="off" inputmode="email" required>
+              </label>
+              <label for="login-password">Senha demonstrativa
+                <input id="login-password" name="password" type="password" placeholder="Digite qualquer senha" autocomplete="off" required>
+              </label>
+              <p id="login-feedback" class="login-feedback" role="status" aria-live="polite"></p>
+              <button class="login-submit" type="submit">Explorar o painel <span aria-hidden="true">↗</span></button>
+            </form>
+            <aside class="demo-credentials" aria-label="Credenciais demonstrativas para acesso">
+              <div class="credentials-heading"><span>ACESSO DE EXEMPLO</span><span>DEMO</span></div>
+              <dl>
+                <div><dt>E-mail</dt><dd><code>demo@orbita.com</code></dd></div>
+                <div><dt>Senha</dt><dd><code>orbita2026</code></dd></div>
+              </dl>
+              <p>Selecione e copie os valores para preencher o formulário.</p>
+            </aside>
+            <p class="session-note">O acesso fica nesta aba e termina ao fechá-la ou ao sair.</p>
+          </section>
+        </div>
+
+        <footer class="welcome-footer"><span>ÓRBITA<span class="brand-dot">.</span> · PAINEL DE VENDAS</span><span>Experiência demonstrativa · sem autenticação real</span></footer>
+      </div>
+    </main>
+
+    <main id="dashboard-app" class="dashboard-app" hidden>
+      <div class="scroll-progress" aria-hidden="true"><span class="scroll-progress__bar"></span></div>
+      <div class="shell">
+        <header class="topbar">
+          <a class="brand" href="#inicio" aria-label="Órbita, início">
+            <span class="brand-mark" aria-hidden="true">ó</span><span class="brand-word">ÓRBITA<span class="brand-dot">.</span></span>
+          </a>
+          <div class="top-actions"><span class="top-label"><span class="live-dot" aria-hidden="true"></span> VISÃO DE VENDAS</span><button id="logout-button" class="logout-button" type="button">Sair <span aria-hidden="true">↗</span></button></div>
+        </header>
+
+        <section class="hero" id="inicio" aria-labelledby="page-title">
+          <div class="hero-copy-wrap">
+            <p class="hero-observatory-label"><span aria-hidden="true"></span> OBSERVATÓRIO · SÉRIE 01</p>
+            <p class="eyebrow">PAPELARIA <span>/</span> PAINEL ANALÍTICO</p>
+            <h1 id="page-title">Vendas em <span>perspectiva.</span></h1>
+            <p class="hero-copy">Acompanhe o valor vendido e compare o desempenho por categoria e cidade.</p>
+          </div>
+          <div class="period"><span class="period-icon" aria-hidden="true">◷</span><span class="period-label">PERÍODO DISPONÍVEL</span><strong id="date-range">Carregando…</strong></div>
+        </section>
+
+        <nav class="chapter-nav" aria-label="Navegação por seção do painel">
+          <span class="chapter-signature"><span class="chapter-signal" aria-hidden="true"></span> ROTA DE LEITURA</span>
+          <div class="chapter-links">
+            <a href="#explore" aria-current="location"><span>01</span> Explorar</a>
+            <a href="#compare"><span>02</span> Comparar</a>
+            <a href="#detail"><span>03</span> Detalhar</a>
+          </div>
+          <span class="chapter-coordinates">ÓRBITA / 01</span>
+        </nav>
+
+        <section class="filters panel" id="explore" aria-labelledby="filters-title" data-reveal="console">
+          <div class="section-heading filter-heading"><div><p class="eyebrow">EXPLORAR</p><h2 id="filters-title">Refine sua visão</h2></div><button id="clear-filters" class="clear-button" type="button">↺ <span>Limpar filtros</span></button></div>
+          <div class="filter-controls">
+            <label for="category-filter">Categoria
+              <select id="category-filter"><option value="">Todas as categorias</option></select>
+            </label>
+            <label for="city-filter">Cidade
+              <select id="city-filter"><option value="">Todas as cidades</option></select>
+            </label>
+          </div>
+        </section>
+
+        <section class="kpis" aria-label="Indicadores de vendas">
+          <article class="kpi-card kpi-card--lead panel" data-reveal="metric"><div class="kpi-label"><span class="kpi-icon icon-cyan" aria-hidden="true">↗</span> VALOR TOTAL VENDIDO</div><p id="total-value" class="kpi-value" aria-live="polite">—</p><p class="kpi-note">Soma do valor das vendas filtradas</p></article>
+          <article class="kpi-card panel" data-reveal="metric"><div class="kpi-label"><span class="kpi-icon icon-violet" aria-hidden="true">#</span> QUANTIDADE DE VENDAS</div><p id="sale-count" class="kpi-value" aria-live="polite">—</p><p class="kpi-note">Contagem de vendas (IDs únicos)</p></article>
+          <article class="kpi-card panel" data-reveal="metric"><div class="kpi-label"><span class="kpi-icon icon-green" aria-hidden="true">◈</span> TICKET MÉDIO</div><p id="average-value" class="kpi-value" aria-live="polite">—</p><p class="kpi-note">Valor total vendido ÷ vendas</p></article>
+        </section>
+
+        <div id="empty-state" class="empty-state panel" role="status" aria-live="polite" hidden><span id="empty-message">Nenhuma venda encontrada para esta combinação de filtros.</span> <button id="empty-clear" type="button">Limpar filtros</button></div>
+
+        <section class="charts" id="compare" aria-label="Comparativos de vendas">
+          <article class="panel chart-panel chart-panel--category" data-reveal="chart-left"><div class="section-heading"><div><p class="eyebrow">COMPARATIVO / 01</p><h2>Valor por categoria</h2></div><span class="chart-unit">VALOR VENDIDO · R$</span></div><p class="chart-hint">Selecione uma barra para filtrar por categoria.</p><div id="category-chart" class="chart" role="region" aria-label="Gráfico interativo do valor vendido por categoria"></div></article>
+          <article class="panel chart-panel chart-panel--city" data-reveal="chart-right"><div class="section-heading"><div><p class="eyebrow">COMPARATIVO / 02</p><h2>Valor por cidade</h2></div><span class="chart-unit">VALOR VENDIDO · R$</span></div><p class="chart-hint">Selecione uma barra para filtrar por cidade.</p><div id="city-chart" class="chart" role="region" aria-label="Gráfico interativo do valor vendido por cidade"></div></article>
+        </section>
+
+        <section class="panel table-panel" id="detail" aria-labelledby="table-title" data-reveal="ledger">
+          <div class="section-heading table-heading">
+            <div><p class="eyebrow">DETALHAMENTO</p><h2 id="table-title">Vendas registradas</h2></div>
+            <div class="table-tools">
+              <label class="search-control" for="sales-search"><span>BUSCAR NO DETALHAMENTO</span><input id="sales-search" type="search" placeholder="ID, data, produto…" autocomplete="off" aria-label="Buscar por ID, data, produto, categoria, cidade, quantidade ou valor" aria-controls="sales-body"></label>
+              <span id="table-count" class="table-count" aria-live="polite">— vendas</span>
+            </div>
+          </div>
+          <div class="table-scroll"><table><thead><tr><th scope="col">ID da venda</th><th scope="col">Data</th><th scope="col">Produto</th><th scope="col">Categoria</th><th scope="col">Cidade</th><th scope="col" class="numeric">Qtd.</th><th scope="col" class="numeric">Valor vendido</th></tr></thead><tbody id="sales-body"></tbody></table></div>
+        </section>
+        <section class="connect-section" aria-labelledby="connect-title" data-reveal>
+          <div class="connect-intro">
+            <p class="eyebrow">CONTINUE A CONVERSA</p>
+            <h2 id="connect-title">Vamos criar algo <span>em conjunto.</span></h2>
+            <p>Encontre o Pietro nas redes ou envie uma mensagem.</p>
+          </div>
+          <nav class="connect-links" aria-label="Links de contato do Pietro">
+            <a class="connect-link" href="https://github.com/Pietro-Olimpio" target="_blank" rel="noopener noreferrer" aria-label="Abrir GitHub de Pietro Olimpio em nova aba">
+              <span class="connect-link-top"><span class="connect-symbol" aria-hidden="true">GH</span><span class="connect-arrow" aria-hidden="true">↗</span></span>
+              <span class="connect-link-copy"><strong>GitHub</strong><span>Pietro-Olimpio</span></span>
+            </a>
+            <a class="connect-link" href="https://www.linkedin.com/in/pietro-correa" target="_blank" rel="noopener noreferrer" aria-label="Abrir LinkedIn de Pietro Correa em nova aba">
+              <span class="connect-link-top"><span class="connect-symbol connect-symbol-linkedin" aria-hidden="true">in</span><span class="connect-arrow" aria-hidden="true">↗</span></span>
+              <span class="connect-link-copy"><strong>LinkedIn</strong><span>pietro-correa</span></span>
+            </a>
+            <a class="connect-link" href="https://wa.me/551999572812" target="_blank" rel="noopener noreferrer" aria-label="Conversar com Pietro pelo WhatsApp no número 19 9957-2812">
+              <span class="connect-link-top"><span class="connect-symbol connect-symbol-whatsapp" aria-hidden="true">WA</span><span class="connect-arrow" aria-hidden="true">↗</span></span>
+              <span class="connect-link-copy"><strong>WhatsApp</strong><span>19 9957-2812</span></span>
+            </a>
+          </nav>
+        </section>
+        <footer class="dashboard-footer"><span>ÓRBITA<span class="brand-dot">.</span> · PAINEL DE VENDAS</span><span>Valor vendido não representa lucro.</span><span class="footer-demo">Demonstração sem autenticação real</span></footer>
+      </div>
+    </main>
+    <noscript>Este painel demonstrativo precisa de JavaScript habilitado.</noscript>
+  </body>
+</html>
