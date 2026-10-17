@@ -192,6 +192,7 @@ async function main() {
       localStorageLength: localStorage.length,
       reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches,
       welcomeAnimation: getComputedStyle(document.querySelector('.welcome-copy')).animationDuration,
+      welcomeTitleAnimation: getComputedStyle(document.querySelector('#welcome-title')).animationDuration,
       viewport: innerWidth,
       documentWidth: document.documentElement.scrollWidth
     })`);
@@ -226,6 +227,7 @@ async function main() {
     gate = await gateState();
     assert.equal(gate.reducedMotion, true);
     assert.ok(parseFloat(gate.welcomeAnimation) <= 0.001, `Animação do gate não reduziu: ${gate.welcomeAnimation}`);
+    assert.ok(parseFloat(gate.welcomeTitleAnimation) <= 0.001, `Reveal tipográfico do gate não reduziu: ${gate.welcomeTitleAnimation}`);
     await command('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'no-preference' }] });
     await waitFor("!matchMedia('(prefers-reduced-motion: reduce)').matches", 'Não foi possível reativar a preferência normal de movimento.');
     console.log('PASS browser — gate, credenciais, favicon SVG/HTTP, viewports e movimento normal/reduzido');
@@ -345,12 +347,18 @@ async function main() {
       reduced: matchMedia('(prefers-reduced-motion: reduce)').matches,
       ready: document.querySelector('#dashboard-app').classList.contains('motion-ready'),
       tableRevealed: document.querySelector('.table-panel').classList.contains('is-revealed'),
-      barAnimation: getComputedStyle(document.querySelector('#category-chart .bar')).animationDuration
+      barAnimation: getComputedStyle(document.querySelector('#category-chart .bar')).animationDuration,
+      heroTitleAnimation: getComputedStyle(document.querySelector('#page-title')).animationDuration,
+      orbitalAnimation: getComputedStyle(document.querySelector('.hero-scene__satellite')).animationDuration,
+      scenePresent: Boolean(document.querySelector('.hero-scene'))
     })`);
     assert.equal(normalMotion.reduced, false, 'Dashboard deveria estar em movimento normal.');
     assert.equal(normalMotion.ready, true, 'Reveals não foram ativados em movimento normal.');
     assert.equal(normalMotion.tableRevealed, false, 'Reveals não aguardaram o detalhamento fora da tela.');
     assert.ok(parseFloat(normalMotion.barAnimation) >= 0.1, `Animação normal das barras não está ativa: ${normalMotion.barAnimation}`);
+    assert.ok(normalMotion.scenePresent, 'A cena SVG orbital não foi montada no dashboard.');
+    assert.ok(parseFloat(normalMotion.heroTitleAnimation) >= 0.1, 'Reveal do título principal não foi ativado.');
+    assert.ok(parseFloat(normalMotion.orbitalAnimation) >= 1, 'Movimento da cena orbital não foi ativado.');
     await evaluate("document.querySelector('.table-panel').scrollIntoView({ block: 'center' })");
     await waitFor("document.querySelector('.table-panel').classList.contains('is-revealed')", 'IntersectionObserver não revelou o detalhamento ao entrar na tela.');
     await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false });
@@ -379,11 +387,15 @@ async function main() {
     const reducedMotionDashboard = await evaluate(`({
       animation: getComputedStyle(document.querySelector('#category-chart .bar')).animationDuration,
       transition: getComputedStyle(document.querySelector('.kpi-card')).transitionDuration,
+      titleAnimation: getComputedStyle(document.querySelector('#page-title')).animationDuration,
+      orbitalAnimation: getComputedStyle(document.querySelector('.hero-scene__satellite')).animationDuration,
       light: document.querySelector('.hero').style.getPropertyValue('--light-x'),
       allRevealed: [...document.querySelectorAll('[data-reveal]')].every(node => node.classList.contains('is-revealed'))
     })`);
     assert.ok(parseFloat(reducedMotionDashboard.animation) <= 0.001);
     assert.ok(parseFloat(reducedMotionDashboard.transition) <= 0.001);
+    assert.ok(parseFloat(reducedMotionDashboard.titleAnimation) <= 0.001);
+    assert.ok(parseFloat(reducedMotionDashboard.orbitalAnimation) <= 0.001);
     assert.equal(reducedMotionDashboard.allRevealed, true);
     await command('Input.dispatchMouseEvent', { type: 'mouseMoved', x: pointerX + 15, y: pointerY + 15 });
     await sleep(50);

@@ -107,6 +107,26 @@
             <h1 id="page-title">Vendas em <span>perspectiva.</span></h1>
             <p class="hero-copy">Acompanhe o valor vendido e compare o desempenho por categoria e cidade.</p>
           </div>
+          <svg class="hero-scene" viewBox="0 0 520 360" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="hero-planet" cx="34%" cy="28%"><stop stop-color="#c4f3e9" stop-opacity=".9"/><stop offset=".2" stop-color="#66bfc0" stop-opacity=".72"/><stop offset=".66" stop-color="#1b4558" stop-opacity=".94"/><stop offset="1" stop-color="#0a141e"/></radialGradient>
+              <radialGradient id="hero-halo"><stop stop-color="#74d9d2" stop-opacity=".18"/><stop offset="1" stop-color="#74d9d2" stop-opacity="0"/></radialGradient>
+              <linearGradient id="hero-orbit-stroke"><stop stop-color="#ff8064" stop-opacity=".1"/><stop offset=".48" stop-color="#74d9d2" stop-opacity=".82"/><stop offset="1" stop-color="#ff8064" stop-opacity=".54"/></linearGradient>
+              <filter id="hero-soft-glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="11"/></filter>
+            </defs>
+            <circle class="hero-scene__halo" cx="260" cy="180" r="158" fill="url(#hero-halo)"/>
+            <circle cx="260" cy="180" r="126" fill="none" stroke="#54727c" stroke-opacity=".2" stroke-dasharray="1 7"/>
+            <circle cx="260" cy="180" r="108" fill="none" stroke="#54727c" stroke-opacity=".22"/>
+            <ellipse class="hero-scene__orbit hero-scene__orbit--outer" cx="260" cy="180" rx="240" ry="72" fill="none" stroke="url(#hero-orbit-stroke)" stroke-width="1.3" transform="rotate(-27 260 180)"/>
+            <ellipse class="hero-scene__orbit hero-scene__orbit--inner" cx="260" cy="180" rx="208" ry="116" fill="none" stroke="#74d9d2" stroke-opacity=".22" transform="rotate(24 260 180)"/>
+            <circle cx="260" cy="180" r="83" fill="#74d9d2" opacity=".2" filter="url(#hero-soft-glow)"/>
+            <circle cx="260" cy="180" r="72" fill="url(#hero-planet)" stroke="#b5eeea" stroke-opacity=".4"/>
+            <path d="M208 154c16-31 48-49 82-44" fill="none" stroke="#f3f1e9" stroke-opacity=".52" stroke-width="1.5" stroke-linecap="round"/>
+            <g class="hero-scene__satellite"><circle cx="260" cy="108" r="5" fill="#ff8064"/><circle cx="260" cy="108" r="11" fill="none" stroke="#ff8064" stroke-opacity=".46"/></g>
+            <circle cx="474" cy="272" r="3" fill="#74d9d2"/><circle cx="65" cy="256" r="2.5" fill="#ff8064"/>
+            <path d="M36 310h48m-48 7h25" stroke="#91a1a8" stroke-opacity=".48"/>
+            <text x="36" y="300" class="hero-scene__label">ORBITAL DATA / 01</text>
+          </svg>
           <div class="period"><span class="period-icon" aria-hidden="true">◷</span><span class="period-label">PERÍODO DISPONÍVEL</span><strong id="date-range">Carregando…</strong></div>
         </section>
 

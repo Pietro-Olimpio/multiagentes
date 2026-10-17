@@ -497,3 +497,48 @@ td:first-child { color: var(--cyan); font: 10px var(--mono); }
 @media (prefers-reduced-motion: reduce) {
   .connect-link:hover, .connect-link:active, .connect-link:hover .connect-arrow { transform: none !important; }
 }
+
+/* Rodada 09 — a cena orbital também conduz a entrada do dashboard. */
+@keyframes title-uncover {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(.1em); }
+  to { clip-path: inset(0); transform: translateY(0); }
+}
+@keyframes hero-aura-breathe {
+  from { opacity: .35; transform: scale(.96); }
+  to { opacity: .74; transform: scale(1.04); }
+}
+@keyframes hero-orbit-outer { from { transform: rotate(-27deg); } to { transform: rotate(333deg); } }
+@keyframes hero-orbit-inner { from { transform: rotate(24deg); } to { transform: rotate(384deg); } }
+.welcome-copy h1 { animation: title-uncover .95s .08s cubic-bezier(.2,.72,.23,1) both; }
+.dashboard-app.is-entering .hero h1 { animation: title-uncover .9s .13s cubic-bezier(.2,.72,.23,1) both; }
+.hero::after { content: none; }
+.hero-scene {
+  position: absolute; z-index: 0; top: 50%; right: clamp(90px, 9vw, 145px); width: min(31vw, 390px); height: auto;
+  overflow: visible; pointer-events: none; opacity: .48; mix-blend-mode: screen;
+  transform: translateY(-50%) translate3d(var(--orbit-x, 0px), var(--orbit-y, 0px), 0);
+  transition: transform .5s cubic-bezier(.2,.72,.23,1), opacity .5s ease;
+}
+.hero-scene__label { fill: #a5b8bf; font: 8px var(--mono); letter-spacing: 1.8px; }
+.hero-scene__halo { transform-box: fill-box; transform-origin: center; animation: hero-aura-breathe 9s ease-in-out infinite alternate; }
+.hero-scene__orbit, .hero-scene__satellite { transform-box: view-box; transform-origin: 50% 50%; }
+.hero-scene__orbit--outer { animation: hero-orbit-outer 64s linear infinite; }
+.hero-scene__orbit--inner { animation: hero-orbit-inner 82s linear infinite; }
+.hero-scene__satellite { animation: hero-orbit-outer 38s linear infinite; }
+.chart-panel:hover { transform: translateY(-2px); }
+.chapter-links a:active { color: var(--cyan); }
+
+@media (max-width: 900px) {
+  .hero-scene { right: 126px; width: 330px; opacity: .38; }
+}
+@media (max-width: 700px) {
+  .hero-scene { top: 54%; right: -48px; width: 238px; opacity: .22; }
+  .hero-scene__label { font-size: 7px; }
+  .hero-copy-wrap { max-width: min(100%, 470px); }
+}
+@media (max-width: 380px) {
+  .hero-scene { top: 42%; right: -64px; width: 205px; opacity: .17; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scene { transition: none !important; }
+  .chart-panel:hover { transform: none !important; }
+}

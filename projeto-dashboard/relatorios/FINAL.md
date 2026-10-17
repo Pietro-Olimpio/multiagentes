@@ -2,24 +2,24 @@
 
 ## Status conjunto: **BLOQUEADO**
 
-A rodada 07 acrescentou navegação e movimento cinematográfico em SVG/CSS nativos. Na rodada 08, o encerramento foi atualizado com a mensagem “O seu próximo projeto pode começar aqui.” e os links foram rotulados como “Meu GitHub”, “Meu LinkedIn” e “Meu número para contato”. Os testes locais passaram; a aprovação conjunta permanece bloqueada porque não foi possível obter revisão independente desta rodada.
+A rodada 07 acrescentou navegação e movimento cinematográfico em SVG/CSS nativos. A rodada 08 refinou o encerramento e a rodada 09 trouxe uma cena orbital SVG animada ao hero do dashboard e reveal tipográfico na entrada. Os testes locais passaram; a aprovação conjunta permanece bloqueada porque não há revisão independente nova desta versão.
 
 ## Versão examinada
 
 | Arquivo | SHA-256 |
 |---|---|
-| `site/index.html` | `4DF531C513E32F8BE26E5B632219092BB0787A36E252B3777F9BD4CF846B438E` |
-| `site/styles.css` | `A0611222B0B92CCD3AFD01F02BF6090F82E9720952A9BFDD8E21C9C00108ABDB` |
+| `site/index.html` | `47849282A19488F5D2FF748586695EB22611D9031E10BBBD1A02C1BAA3FA2CC8` |
+| `site/styles.css` | `E5397BFE12A8D61849509D9269100C8187FC04667EA1E758E049E4D2D6A08D89` |
 | `site/dashboard.js` | `0E9D55AF9C48F42F146DD9EB80287036D825A4686064DC43DF9D2CF2F0022766` |
-| `tests/test_dashboard_browser.cjs` | `1A39A072E70952779D72F7E48B7C14CB15A40768553059851F677EF1A7B8880C` |
+| `tests/test_dashboard_browser.cjs` | `15E38CBCBCBDE7593D441CDCCE775EC191A1F41BC2BDEF4A875A39E5C1C6CCF6` |
 
 ## Entrega e testes locais
 
 - Preservada a stack estática HTML/CSS/JS e a funcionalidade do painel. SVG/CSS entregam profundidade; não foi adicionado WebGL/dependência pesada.
 - Links finais: `https://github.com/Pietro-Olimpio`, `https://www.linkedin.com/in/pietro-correa` e `https://wa.me/551999572812`.
-- Suíte executada pelo Coordenador na rodada 08: **6/6 passaram**, incluindo Chrome/CDP. O teste verifica também o texto da chamada e os três rótulos de contato. HTTP, teclado, movimento reduzido e viewports 1440/390/320 passaram.
-- Capturas visuais da versão atual estão em `%TEMP%\orbita-round08-evidence\`.
-- Relatório desta alteração: `relatorios/rodada-08/coordenador.md`. Revisão independente desta rodada e aprovação conjunta: **PENDENTES**.
+- Suíte executada pelo Coordenador na rodada 09: **6/6 passaram**, incluindo Chrome/CDP. Testou o reveal do título, animação orbital com movimento normal e sua redução, além dos fluxos anteriores; viewports 1440/390/320 sem overflow.
+- Capturas visuais desktop/mobile estão em `%TEMP%\orbita-round09-evidence\`.
+- Relatório desta alteração: `relatorios/rodada-09/coordenador.md`. Revisão independente desta versão e aprovação conjunta: **PENDENTES**.
 
 ## Abrir o site
 
